@@ -17,11 +17,12 @@ namespace MusicPlayer.Music
         private int currentPlayTime = 0;
         private bool isPlaying = false;
         private TerrariaPlugin plugin;
+        private int tempo = NoteFileParser.Tempo;
 
         public Song(TerrariaPlugin plugin, String name, String path, SongPlayer ply)
         {
             Name = name;
-            notesToPlay = NoteFileParser.Read(path);
+            notesToPlay = NoteFileParser.Read(path, out tempo);
             player = ply;
             this.plugin = plugin;
         }
@@ -40,7 +41,7 @@ namespace MusicPlayer.Music
             }
 
             delta += (int)((DateTime.Now - lastUpdate).TotalMilliseconds);
-            if (delta > NoteFileParser.Tempo)
+            if (delta > tempo)
             {
                 List<Note> notes = notesToPlay[0];
                 notesToPlay.RemoveAt(0);
@@ -48,7 +49,7 @@ namespace MusicPlayer.Music
                 {
                     PlayNote(note.Value);
                 }
-                delta -= NoteFileParser.Tempo;
+                delta -= tempo;
             }
 
             currentPlayTime += (int)delta;
