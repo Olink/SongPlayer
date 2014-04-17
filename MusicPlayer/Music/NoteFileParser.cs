@@ -35,7 +35,7 @@ namespace MusicPlayer.Music
                     }
 
                     List<Note> ret = new List<Note>();
-                    if (string.IsNullOrWhiteSpace(line))
+                    if (!string.IsNullOrWhiteSpace(line))
                     {
                         foreach (var note in line.Split(',').ToList())
                         {
