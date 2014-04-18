@@ -35,20 +35,30 @@ namespace MusicPlayer.Music
                     }
 
                     List<Note> ret = new List<Note>();
-                    foreach (var note in line.Split(',').ToList())
+                    if (!string.IsNullOrWhiteSpace(line))
                     {
-                        try
+                        foreach (var note in line.Split(',').ToList())
                         {
-                            ret.Add(new Note()
-                                        {
-                                            Value = NoteName.GetNoteByName(note)
-                                        }
-                                    );
+                            try
+                            {
+                                ret.Add(new Note()
+                                            {
+                                                Value = NoteName.GetNoteByName(note)
+                                            }
+                                        );
+                            }
+                            catch (ArgumentException e)
+                            {
+                                Log.ConsoleError("Failed to read note: {0}", note );
+                            }
                         }
-                        catch (ArgumentException e)
-                        {
-                            Log.ConsoleError("Failed to read note: {0}", note );
-                        }
+                    }
+                    {
+                        ret.Add(new Note()
+                                    {
+                                        Value = -2   
+                                    }
+                                );
                     }
                     Notes.Add(ret);
                 }

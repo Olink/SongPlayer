@@ -47,7 +47,8 @@ namespace MusicPlayer.Music
                 notesToPlay.RemoveAt(0);
                 foreach (var note in notes)
                 {
-                    PlayNote(note.Value);
+                    if (note.Value >= -1 && note.Value <= 1)
+                        PlayNote(note.Value);
                 }
                 delta -= tempo;
             }
