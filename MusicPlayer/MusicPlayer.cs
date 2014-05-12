@@ -11,7 +11,7 @@ using TShockAPI;
 
 namespace MusicPlayer
 {
-    [ApiVersion(1,15)]
+    [ApiVersion(1,16)]
     public class MusicPlayer : TerrariaPlugin
     {
         public string songPath;
