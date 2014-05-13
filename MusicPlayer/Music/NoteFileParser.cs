@@ -22,7 +22,7 @@ namespace MusicPlayer.Music
                 bool readTempo = false;
                 while ((line = reader.ReadLine()) != null)
                 {
-	                if ((line.Trim())[0] == '#')
+					if (!string.IsNullOrWhiteSpace(line) && (line.Trim())[0] == '#')
 	                {
 						//this line is a comment, skip
 		                continue;
