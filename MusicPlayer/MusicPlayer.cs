@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Odbc;
 using System.IO;
-using System.Linq;
-using System.Text;
 using MusicPlayer.Music;
 using Terraria;
 using TerrariaApi.Server;
@@ -11,7 +7,7 @@ using TShockAPI;
 
 namespace MusicPlayer
 {
-    [ApiVersion(1,16)]
+    [ApiVersion(1,17)]
     public class MusicPlayer : TerrariaPlugin
     {
         public string songPath;
